@@ -42,19 +42,24 @@ def rand_choice(choices):
 # Returns a random row for both a question with answer and random spanish words for multiple choices depending on if question is True
 def rand_row(csv_file, question=True):
     global used_words
-    r_target = random.randrange(1, 10)
-    r = 1
-    for row in csv_file:
-        if r == r_target and question == True:
-            if f'{row[1]}' not in used_words:
-                used_words.add(f'{row[1]}')
-                return f'{row[1]}', f'{row[4]}'
-            else:
-                return False
-                pass
-        elif question == False:
-            return f'{row[4]}'
-        r += 1
+    done = False
+    while not done:
+        r_target = random.randrange(1, 10)
+        r = 1
+        for row in csv_file:
+            if r == r_target and question == True:
+                if f'{row[1]}' not in used_words:
+                    used_words.add(f'{row[1]}')
+                    done = True
+                    return f'{row[1]}', f'{row[4]}'
+                else:
+                    continue
+
+            elif question == False:
+                done = True
+                return f'{row[4]}'
+                
+            r += 1
 
 
 # Prints answer promt and returns user input as a boolean
