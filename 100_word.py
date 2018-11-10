@@ -16,7 +16,7 @@ used_words = set()
 
 NUMBER_OF_QUESTION = 10
 
-NUMBER_OF_ATTEMPS = 2
+NUMBER_OF_ATTEMPS = 4
 
 
 # Returns a random list from an orderd list
