@@ -1,14 +1,7 @@
 '''
 
-current state: itterates through questions still reapeating some. Responds to user input and only crashes sometimes... hasnt crashed in a while now.
-
-
-*issue: rand_row; only repeats once but what to do when its already in used_words
-
-*bug: sometimes multiple choices will come out mixed after being wrong...or should they come mixed and they stay in an order?
-
-
-add: a timer or number of attemps per question to understand difficulty of each question 
+current state: itterates through questions. Responds to user input. 
+number of question and attemps available varibles work. 
 
 
 eventually: merge with tkinter module
@@ -23,8 +16,7 @@ used_words = set()
 
 NUMBER_OF_QUESTION = 10
 
-# Still needs to be inplemented into the program
-NUMBER_OF_ATTEMPS = 1
+NUMBER_OF_ATTEMPS = 2
 
 
 # Returns a random list from an orderd list
@@ -44,7 +36,7 @@ def rand_row(csv_file, question=True):
     global used_words
     done = False
     while not done:
-        r_target = random.randrange(1, 10)
+        r_target = random.randrange(1, 100)
         r = 1
         for row in csv_file:
             if r == r_target and question == True:
@@ -58,24 +50,28 @@ def rand_row(csv_file, question=True):
             elif question == False:
                 done = True
                 return f'{row[4]}'
-                
+
             r += 1
 
 
 # Prints answer promt and returns user input as a boolean
 def answer_promt(answer, choices):
-    response = input('\nChoose "A" - "B" and press Enter: > ')
+    response = input('\nChoose "A" - "D" and press Enter: > ')
 
+    # Check if response is a-d and not empty
     if response.upper() in 'ABCD' and response.upper() != '':
         choice = 'ABCD'.find(response.upper())
+
+        # When choice is the correct answer
         if choices[choice] == answer:
             print('\nNice work! You got it!\n')
             return True
-
+        # When choice is wrond but a valid choice
         elif response.upper() in 'ABCD':
             print('\nSorry try again\n')
             return False
 
+    # When choice is not valid
     else:
         print('\nMake sure you user character "A B C D". Try again\n')
         return False
@@ -83,6 +79,7 @@ def answer_promt(answer, choices):
 
 # Prints out question promt
 def question_promt(spanish_word, choices, answer):
+    print('=======================================')
     print('Whats the correct translation for: {}'.format(
         spanish_word.capitalize()))
     choices = rand_choice(choices)
@@ -99,6 +96,7 @@ def question_promt(spanish_word, choices, answer):
 
 # Main function 
 def question_program(num_of_questions=100):
+    global NUMBER_OF_ATTEMPS
     total_questions = num_of_questions
     answered = 0
     while answered <= total_questions:
@@ -114,9 +112,11 @@ def question_program(num_of_questions=100):
             while len(choices) <= 3:
                 choices.add(rand_row(open_csv_words, question=False))
             ans = False
-
-            while ans != True:
+            attemps = 0
+            
+            while ans != True and attemps < NUMBER_OF_ATTEMPS:
                 ans = question_promt(spanish_word, choices, answer)
+                attemps += 1
             answered += 1
 
 
