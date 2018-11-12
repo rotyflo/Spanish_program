@@ -73,12 +73,12 @@ def answer_promt(answer, choices):
         if choices[choice] == answer:
             print('Nice work! You got it!\n')
             return True
-        # When choice is wrond but a valid choice
+        # When choice is wrong but a valid choice
         elif response in '1234':
             print('Sorry try again\n')
             return False
 
-    #
+    # When calling exit from promt
     elif response.lower() == 'exit':
         clear_screen()
         exit()
