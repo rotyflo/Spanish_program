@@ -11,12 +11,18 @@ eventually: merge with tkinter module
 
 import csv
 import random
+import os
 
 used_words = set()
 
 NUMBER_OF_QUESTION = 10
 
 NUMBER_OF_ATTEMPS = 4
+
+
+# Clears screen
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 # Returns a random list from an orderd list
@@ -60,26 +66,27 @@ def answer_promt(answer, choices):
 
     # Check if response is a-d and not empty
     if response.upper() in 'ABCD' and response.upper() != '':
+        clear_screen()
         choice = 'ABCD'.find(response.upper())
 
         # When choice is the correct answer
         if choices[choice] == answer:
-            print('\nNice work! You got it!\n')
+            print('Nice work! You got it!\n')
             return True
         # When choice is wrond but a valid choice
         elif response.upper() in 'ABCD':
-            print('\nSorry try again\n')
+            print('Sorry try again\n')
             return False
 
     # When choice is not valid
     else:
-        print('\nMake sure you user character "A B C D". Try again\n')
+        clear_screen()
+        print('Make sure you user character "A B C D". Try again\n')
         return False
 
 
 # Prints out question promt
 def question_promt(spanish_word, choices, answer):
-    print('=======================================')
     print('Whats the correct translation for: {}'.format(
         spanish_word.capitalize()))
     choices = rand_choice(choices)
@@ -96,6 +103,8 @@ def question_promt(spanish_word, choices, answer):
 
 # Main function 
 def question_program(num_of_questions=100):
+    clear_screen()
+
     global NUMBER_OF_ATTEMPS
     total_questions = num_of_questions
     answered = 0
