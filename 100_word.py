@@ -65,18 +65,23 @@ def answer_promt(answer, choices):
     response = input('\nChoose 1 - 4 and press Enter: > ')
 
     # Check if response is a-d and not empty
-    if response.upper() in '1234' and response.upper() != '':
+    if response in '1234' and response != '':
         clear_screen()
-        choice = '1234'.find(response.upper())
+        choice = '1234'.find(response)
 
         # When choice is the correct answer
         if choices[choice] == answer:
             print('Nice work! You got it!\n')
             return True
         # When choice is wrond but a valid choice
-        elif response.upper() in '1234':
+        elif response in '1234':
             print('Sorry try again\n')
             return False
+
+    #
+    elif response.lower() == 'exit':
+        clear_screen()
+        exit()
 
     # When choice is not valid
     else:
@@ -103,11 +108,13 @@ def question_promt(spanish_word, choices, answer):
 
 # Main function 
 def question_program(num_of_questions=100):
-    clear_screen()
-
     global NUMBER_OF_ATTEMPS
     total_questions = num_of_questions
     answered = 0
+
+    clear_screen()
+    print('Type "exit" to end program\n')
+
     while answered <= total_questions:
 
         with open('100_words.csv', 'rt', encoding='utf8') as csv_file:
