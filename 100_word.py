@@ -11,12 +11,18 @@ eventually: merge with tkinter module
 
 import csv
 import random
+import os
 
 used_words = set()
 
 NUMBER_OF_QUESTION = 10
 
 NUMBER_OF_ATTEMPS = 4
+
+
+# Clears screen
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 # Returns a random list from an orderd list
@@ -56,38 +62,44 @@ def rand_row(csv_file, question=True):
 
 # Prints answer promt and returns user input as a boolean
 def answer_promt(answer, choices):
-    response = input('\nChoose "A" - "D" and press Enter: > ')
+    response = input('\nChoose 1 - 4 and press Enter: > ')
 
     # Check if response is a-d and not empty
-    if response.upper() in 'ABCD' and response.upper() != '':
-        choice = 'ABCD'.find(response.upper())
+    if response in '1234' and response != '':
+        clear_screen()
+        choice = '1234'.find(response)
 
         # When choice is the correct answer
         if choices[choice] == answer:
-            print('\nNice work! You got it!\n')
+            print('Nice work! You got it!\n')
             return True
         # When choice is wrond but a valid choice
-        elif response.upper() in 'ABCD':
-            print('\nSorry try again\n')
+        elif response in '1234':
+            print('Sorry try again\n')
             return False
+
+    #
+    elif response.lower() == 'exit':
+        clear_screen()
+        exit()
 
     # When choice is not valid
     else:
-        print('\nMake sure you user character "A B C D". Try again\n')
+        clear_screen()
+        print('Make sure you use numbers 1, 2, 3 or 4. Try again\n')
         return False
 
 
 # Prints out question promt
 def question_promt(spanish_word, choices, answer):
-    print('=======================================')
     print('Whats the correct translation for: {}'.format(
         spanish_word.capitalize()))
     choices = rand_choice(choices)
-    a = ['A', 'B', 'C', 'D']
+    a = ['1', '2', '3', '4']
     x = 0
 
     for choice in choices:
-        print('\n{}.) {}'.format(a[x], choice.capitalize()))
+        print('\n {}) {}'.format(a[x], choice.capitalize()))
         x += 1
 
     choice = answer_promt(answer, choices)
@@ -99,6 +111,10 @@ def question_program(num_of_questions=100):
     global NUMBER_OF_ATTEMPS
     total_questions = num_of_questions
     answered = 0
+
+    clear_screen()
+    print('Type "exit" to end program\n')
+
     while answered <= total_questions:
 
         with open('100_words.csv', 'rt', encoding='utf8') as csv_file:
