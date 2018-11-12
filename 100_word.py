@@ -3,6 +3,8 @@
 current state: itterates through questions. Responds to user input. 
 number of question and attemps available varibles work. 
 
+add: a way to rank them and sort by dificulty
+
 
 eventually: merge with tkinter module
 
@@ -19,10 +21,37 @@ NUMBER_OF_QUESTION = 10
 
 NUMBER_OF_ATTEMPS = 4
 
+KNOWN_WORDS_LOCATION = 'known_words.txt'
+
+# Write input to file path
+def write_to(file_path, input_to_file):
+    f = open(file_path, 'a+')
+    f.write('{}\n'.format(input_to_file))
+    f.close()
+
 
 # Clears screen
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
+# A promt asking the difficulty of each question
+def difficulty(spanish_word):
+    done = False
+    while not done:
+        try:
+            response = input('On a scale of 1 - 5, how difficult was it?\n1 meaning you know it and 5 really hard.\n> ')
+            if int(response) == 1:
+                write_to(KNOWN_WORDS_LOCATION, spanish_word)
+                done = True
+                clear_screen()
+                return
+            else:
+                done = True
+                clear_screen()
+                return
+        except:
+            pass
 
 
 # Returns a random list from an orderd list
@@ -127,12 +156,14 @@ def question_program(num_of_questions=100):
 
             while len(choices) <= 3:
                 choices.add(rand_row(open_csv_words, question=False))
+
             ans = False
             attemps = 0
             
             while ans != True and attemps < NUMBER_OF_ATTEMPS:
                 ans = question_promt(spanish_word, choices, answer)
                 attemps += 1
+            difficulty(spanish_word)
             answered += 1
 
 
