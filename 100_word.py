@@ -62,26 +62,26 @@ def rand_row(csv_file, question=True):
 
 # Prints answer promt and returns user input as a boolean
 def answer_promt(answer, choices):
-    response = input('\nChoose "A" - "D" and press Enter: > ')
+    response = input('\nChoose 1 - 4 and press Enter: > ')
 
     # Check if response is a-d and not empty
-    if response.upper() in 'ABCD' and response.upper() != '':
+    if response.upper() in '1234' and response.upper() != '':
         clear_screen()
-        choice = 'ABCD'.find(response.upper())
+        choice = '1234'.find(response.upper())
 
         # When choice is the correct answer
         if choices[choice] == answer:
             print('Nice work! You got it!\n')
             return True
         # When choice is wrond but a valid choice
-        elif response.upper() in 'ABCD':
+        elif response.upper() in '1234':
             print('Sorry try again\n')
             return False
 
     # When choice is not valid
     else:
         clear_screen()
-        print('Make sure you user character "A B C D". Try again\n')
+        print('Make sure you use numbers 1, 2, 3 or 4. Try again\n')
         return False
 
 
@@ -90,11 +90,11 @@ def question_promt(spanish_word, choices, answer):
     print('Whats the correct translation for: {}'.format(
         spanish_word.capitalize()))
     choices = rand_choice(choices)
-    a = ['A', 'B', 'C', 'D']
+    a = ['1', '2', '3', '4']
     x = 0
 
     for choice in choices:
-        print('\n{}.) {}'.format(a[x], choice.capitalize()))
+        print('\n {}) {}'.format(a[x], choice.capitalize()))
         x += 1
 
     choice = answer_promt(answer, choices)
