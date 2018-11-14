@@ -4,6 +4,7 @@ add: buttons to click for choices
 '''
 from tkinter import *
 from PIL import Image, ImageTk
+import words
 
 # Initialize window as a subclass of Frame
 class Window(Frame):
@@ -18,8 +19,8 @@ class Window(Frame):
 		self.master.title('GUI')
 		self.pack(fill=BOTH, expand=1)
 
-		# Create quit button
-		quitButton = Button(self, text='Quit', command=self.client_exit)
+		# Create quit button. Added a function from words.py to the command attribute
+		quitButton = Button(self, text='Quit', command=words.rand_choice)
 		quitButton.place(x=0, y=0)
 
 		# Create top menu bar
