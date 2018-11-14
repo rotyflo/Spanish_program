@@ -20,7 +20,7 @@ class Window(Frame):
 		self.pack(fill=BOTH, expand=1)
 
 		# Create a message box
-		text_message = "This is a message from a variable."
+		text_message = words.test()
 		question_message = Message(self, text=text_message)
 		question_message.config(bg='#c0c0c0', font=('times', 20))
 		question_message.pack()

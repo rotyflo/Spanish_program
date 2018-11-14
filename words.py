@@ -21,7 +21,7 @@ NUMBER_OF_QUESTION = 10
 
 NUMBER_OF_ATTEMPS = 4
 
-KNOWN_WORDS_LOCATION = '/known_words.txt'
+KNOWN_WORDS_LOCATION = 'known_words.txt'
 
 
 # Write input to file path
@@ -61,15 +61,15 @@ def difficulty(spanish_word):
 
 # Returns a random list from an orderd list
 # It should take choices as a parameter in line 64 and choices in 66 should be assigned list(choices)
-def rand_choice():
+def rand_choice(choices):
 	rand_set = set()
-	choices = [1,2,3]
+	choices = list(choices)
 
 	while len(rand_set) != len(choices):
 		target = random.randrange(len(choices))
 		rand_set.add(choices[target])
 
-	print(list(rand_set))
+	return list(rand_set)
 
 
 # Returns a random row for both a question with answer and random spanish words for multiple choices depending on if question is True
@@ -173,5 +173,5 @@ def question_program(num_of_questions=100):
 			answered += 1
 
 
-# question_program(num_of_questions=NUMBER_OF_QUESTION)
+question_program(num_of_questions=NUMBER_OF_QUESTION)
 
