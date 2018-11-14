@@ -19,8 +19,14 @@ class Window(Frame):
 		self.master.title('GUI')
 		self.pack(fill=BOTH, expand=1)
 
+		# Create a message box
+		text_message = "This is a message from a variable."
+		question_message = Message(self, text=text_message)
+		question_message.config(bg='#c0c0c0', font=('times', 20))
+		question_message.pack()
+
 		# Create quit button. Added a function from words.py to the command attribute
-		quitButton = Button(self, text='Quit', command=words.rand_choice)
+		quitButton = Button(self, text='Print 123', command=words.rand_choice)
 		quitButton.place(x=0, y=0)
 
 		# Create top menu bar
