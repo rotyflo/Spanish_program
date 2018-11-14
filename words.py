@@ -9,6 +9,12 @@ add: a way to rank them and sort by dificulty
 eventually: merge with tkinter module
 
 
+============NEEDED FOR GUI============
+Submit button - renders a new random message promt and raidio button with associated answer. Checks for validity.
+
+
+
+
 '''
 
 import csv
