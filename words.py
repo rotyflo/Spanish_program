@@ -178,6 +178,6 @@ def question_program(num_of_questions=100):
 			difficulty(spanish_word)
 			answered += 1
 
-
-question_program(num_of_questions=NUMBER_OF_QUESTION)
+# DONT RUN FOR GUI
+# question_program(num_of_questions=NUMBER_OF_QUESTION)
 
