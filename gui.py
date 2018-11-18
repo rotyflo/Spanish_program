@@ -51,18 +51,9 @@ class Window(Frame):
 
 		# Create edit menu button with drop down menu
 		edit = Menu(menu)
-		edit.add_command(label='Show Image', command=self.showImg)
+
 		edit.add_command(label='Show Text', command=self.showTxt)
 		menu.add_cascade(label='Edit', menu=edit)
-
-	# Show image cmd, will delete most likely
-	def showImg(self):
-		load = Image.open('pic.png')
-		render = ImageTk.PhotoImage(load)
-
-		img = Label(self, image=render)
-		img.image = render
-		img.place(x=50,y=50)
 
 	# showtext cmd, will delete maybe if not needed
 	def showTxt(self):
@@ -80,7 +71,7 @@ class Window(Frame):
 			open_csv_words = csv.reader(csv_file, delimiter=',')
 			spanish_word, answer = words.rand_row(open_csv_words)
 			self.text_message.set('What is the correct translation of: {}'.format(spanish_word.capitalize()))
-		print(self.answer.get())
+
 
 
 # root is designated as the root parent window
