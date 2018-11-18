@@ -28,11 +28,12 @@ class Window(Frame):
 		question_message.pack(fill=X)
 
 		# Radiobuttons
-		answer = IntVar()
-		Radiobutton(self, text="One", variable=answer, value=1).pack(pady=5, padx=5, anchor=W)
-		Radiobutton(self, text="Two", variable=answer, value=2).pack(pady=5, padx=5, anchor=W)
-		Radiobutton(self, text="Three", variable=answer, value=3).pack(pady=5, padx=5, anchor=W)
-		Radiobutton(self, text="Four", variable=answer, value=4).pack(pady=5, padx=5, anchor=W)
+		self.answer = IntVar()
+		Radiobutton(self, text="One", variable=self.answer, value=1).pack(pady=5, padx=5, anchor=W)
+		Radiobutton(self, text="Two", variable=self.answer, value=2).pack(pady=5, padx=5, anchor=W)
+		Radiobutton(self, text="Three", variable=self.answer, value=3).pack(pady=5, padx=5, anchor=W)
+		Radiobutton(self, text="Four", variable=self.answer, value=4).pack(pady=5, padx=5, anchor=W)
+
 		# Create random word button. Added a function from words.py to the command attribute
 		randButton = Button(self, text='Random Word', command=self.rand_row)
 		randButton.pack(pady=20, padx=20, side=LEFT)		
@@ -79,6 +80,7 @@ class Window(Frame):
 			open_csv_words = csv.reader(csv_file, delimiter=',')
 			spanish_word, answer = words.rand_row(open_csv_words)
 			self.text_message.set('What is the correct translation of: {}'.format(spanish_word.capitalize()))
+		print(self.answer.get())
 
 
 # root is designated as the root parent window
