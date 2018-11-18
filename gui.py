@@ -31,8 +31,8 @@ class Window(Frame):
 		answer = IntVar()
 		Radiobutton(self, text="One", variable=answer, value=1).pack(pady=5, padx=5, anchor=W)
 		Radiobutton(self, text="Two", variable=answer, value=2).pack(pady=5, padx=5, anchor=W)
-		Radiobutton(self, text="Three", variable=answer, value=1).pack(pady=5, padx=5, anchor=W)
-		Radiobutton(self, text="Four", variable=answer, value=2).pack(pady=5, padx=5, anchor=W)
+		Radiobutton(self, text="Three", variable=answer, value=3).pack(pady=5, padx=5, anchor=W)
+		Radiobutton(self, text="Four", variable=answer, value=4).pack(pady=5, padx=5, anchor=W)
 		# Create random word button. Added a function from words.py to the command attribute
 		randButton = Button(self, text='Random Word', command=self.rand_row)
 		randButton.pack(pady=20, padx=20, side=LEFT)		
@@ -89,7 +89,7 @@ windowHeight = root.winfo_reqheight()
 positionRight = int(root.winfo_screenwidth()/2 - windowWidth/2)
 positionDown = int(root.winfo_screenheight()/2 - windowHeight/2)
 # Uncomment below for a centered window
-#root.geometry('+{}+{}'.format(positionRight,positionDown))
+root.geometry('+{}+{}'.format(positionRight,positionDown))
 # uncomment below for a top left corner window
 #root.geometry('400x300')
 app = Window(root)
