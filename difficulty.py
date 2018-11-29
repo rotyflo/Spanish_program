@@ -1,4 +1,5 @@
 from clear_screen import clear_screen
+from write_to import write_to
 
 KNOWN_WORDS_LOCATION = 'known_words.txt'
 
