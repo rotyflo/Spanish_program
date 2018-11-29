@@ -11,7 +11,6 @@ from write_to import write_to
 from difficulty import difficulty
 
 NUMBER_OF_QUESTION = 10
-NUMBER_OF_ATTEMPS = 4
 answered = 0
 
 clear_screen()
@@ -32,8 +31,8 @@ while answered <= NUMBER_OF_QUESTION:
 		ans = False
 		attemps = 0
 
-		while ans != True and attemps < NUMBER_OF_ATTEMPS:
+		while ans != True:
 			ans = question_prompt(spanish_word, choices, answer)
-			attemps += 1
+
 		difficulty(spanish_word)
 		answered += 1
