@@ -1,10 +1,12 @@
 from answers import answer_prompt
 from random_stuff import rand_choice
+from clear_screen import clear_screen
 
 def question_prompt(spanish_word, choices, answer):
     """Prints out question prompt"""
-    print('Translate: {}'
-          .format(spanish_word.capitalize()))
+    clear_screen()
+
+    print('Translate: ' + spanish_word.capitalize())
     
     choices = rand_choice(choices)
     a = ['1', '2', '3', '4']
