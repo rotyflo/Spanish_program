@@ -10,13 +10,10 @@ from random_stuff import rand_row
 from write_to import write_to
 from difficulty import difficulty
 
-NUMBER_OF_QUESTION = 10
-answered = 0
-
 clear_screen()
 print('Type "exit" to end program\n')
 
-while answered <= NUMBER_OF_QUESTION:
+while True:
 	with open('100_words.csv', 'rt', encoding='utf8') as csv_file:
 		open_csv_words = csv.reader(csv_file, delimiter=',')
 
@@ -28,11 +25,9 @@ while answered <= NUMBER_OF_QUESTION:
 		while len(choices) <= 3:
 			choices.add(rand_row(open_csv_words, question=False))
 
-		ans = False
-		attemps = 0
+		correct = False
 
-		while ans != True:
-			ans = question_prompt(spanish_word, choices, answer)
+		while not correct:
+			correct = question_prompt(spanish_word, choices, answer)
 
 		difficulty(spanish_word)
-		answered += 1
