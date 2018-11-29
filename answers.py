@@ -7,11 +7,7 @@ def answer_prompt(answer, choices):
     response = input('\nChoose 1 - 4 and press Enter: > ')
 
     if response.lower() == 'exit':
-        clear_screen()
-
-        print('You got {} questions right!'.format(str(total_answered)))
-        
-        exit()
+        end_program()
 
     validity = is_it_valid(response, choices, answer)
 
@@ -48,3 +44,10 @@ def is_it_correct(answer, response):
         print('Sorry try again\n')
 
         return False
+
+def end_program():
+    clear_screen()
+
+    print('You got {} questions right!'.format(str(total_answered)))
+        
+    exit()
