@@ -8,7 +8,7 @@ from clear_screen import clear_screen
 from questions import question_prompt
 from random_stuff import rand_row
 from write_to import write_to
-from difficulty import difficulty
+from how_difficult import how_difficult
 
 clear_screen()
 print('Type "exit" to end program\n')
@@ -30,4 +30,4 @@ while True:
 		while not correct:
 			correct = question_prompt(spanish_word, choices, answer)
 
-		difficulty(spanish_word)
+		how_difficult(spanish_word)
