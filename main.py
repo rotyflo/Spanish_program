@@ -1,8 +1,3 @@
-"""current state: itterates through questions. Responds to user input. 
-   number of question and attemps available varibles work. 
-
-   add: a way to rank them and sort by dificulty"""
-
 from csv_to_list import csv_to_list
 from clear_screen import clear_screen
 from questions import question_prompt
