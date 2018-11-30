@@ -13,33 +13,29 @@ def rand_choice(choices):
     return list(rand_set)
 
 
-def rand_row(csv_file, question=True, used_words=set()):
+def rand_row(word_list, question=True, used_words=set()):
     """Returns a random row for both a question with
        answer and random spanish words for multiple choices
        depending on if question is True"""
     done = False
     
     while not done:
-        r_target = random.randrange(1, 100)
-        r = 1
+        random_row = random.randrange(1, 100)
+        row = word_list[random_row]
+        word = row[1]
+        answer = row[4]
 
-        for row in csv_file:
-            word = row[1]
-            answer = row[4]
+        if question == True:
+            if word not in used_words:
+                used_words.add(word)
 
-            if r == r_target and question == True:
-                if word not in used_words:
-                    used_words.add(word)
-
-                    done = True
-                    
-                    return word, answer
-                else:
-                    continue
-
-            elif question == False:
                 done = True
+                
+                return word, answer
+            else:
+                continue
 
-                return answer
+        else:
+            done = True
 
-            r += 1
+            return answer
