@@ -48,6 +48,6 @@ def is_it_correct(answer, response):
 def end_program():
     clear_screen()
 
-    print('You got {} questions right!'.format(str(total_answered)))
+    print(f'You got {total_answered} questions right!')
         
     exit()

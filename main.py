@@ -7,7 +7,6 @@ import csv
 from clear_screen import clear_screen
 from questions import question_prompt
 from random_stuff import rand_row
-from write_to import write_to
 from how_difficult import how_difficult
 
 clear_screen()

@@ -6,15 +6,14 @@ def question_prompt(spanish_word, choices, answer):
     """Prints out question prompt"""
     clear_screen()
 
-    print('Translate: ' + spanish_word.capitalize())
+    print(f'Translate: {spanish_word.capitalize()}')
     
     choices = rand_choice(choices)
-    a = ['1', '2', '3', '4']
-    x = 0
+    option = 1
 
     for choice in choices:
-        print('\n {}) {}'.format(a[x], choice.capitalize()))
-        x += 1
+        print(f'\n {option}) {choice.capitalize()}')
+        option += 1
 
     choice = answer_prompt(answer, choices)
     return choice
