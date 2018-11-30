@@ -3,7 +3,7 @@
 
    add: a way to rank them and sort by dificulty"""
 
-import csv
+from csv_to_list import csv_to_list
 from clear_screen import clear_screen
 from questions import question_prompt
 from random_stuff import rand_row
@@ -13,20 +13,20 @@ clear_screen()
 print('Type "exit" to end program\n')
 
 while True:
-	with open('100_words.csv', 'rt', encoding='utf8') as csv_file:
-		open_csv_words = csv.reader(csv_file, delimiter=',')
+	csv_file = '100_words.csv'
+	word_list = csv_to_list(csv_file)
 
-		choices = set()
+	choices = set()
 
-		spanish_word, answer = rand_row(open_csv_words)
-		choices.add(answer)
+	word, answer = rand_row(word_list)
+	choices.add(answer)
 
-		while len(choices) <= 3:
-			choices.add(rand_row(open_csv_words, question=False))
+	while len(choices) <= 3:
+		choices.add(rand_row(word_list, question=False))
 
-		correct = False
+	correct = False
 
-		while not correct:
-			correct = question_prompt(spanish_word, choices, answer)
+	while not correct:
+		correct = question_prompt(word, choices, answer)
 
-		how_difficult(spanish_word)
+	how_difficult(word)
