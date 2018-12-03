@@ -2,14 +2,15 @@ from clear_screen import clear_screen
 from ast import literal_eval
 
 
-def file2dict (file_path):
+def file2dict(file_path):
 	"""Turns the dictionary file into a python_dict"""
 	read_file = open(file_path, 'r').read()
 	python_dict = literal_eval(read_file)
 	return python_dict
 
 
-def dict2set (dictionary):
+def dict2set(dictionary):
+	"""Make a dictionary to a set"""
 	known_words_set = set()
 	for key, value in dictionary.items():
 		for v in value:
