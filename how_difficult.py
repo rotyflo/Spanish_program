@@ -15,4 +15,5 @@ def how_difficult(word):
             if difficulty >= 1 and difficulty <= 5:
                 write_to(KNOWN_WORDS_LOCATION, word, difficulty)
         except:
-            pass
+            if difficulty not in range(1,6):
+                difficulty = 0
