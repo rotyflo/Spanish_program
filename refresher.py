@@ -39,7 +39,11 @@ def dict2list(dictionary):
 
 
 def rand_pair(known_words_list, question=True, used_words=set()):
+	
+
+
 	done = False
+
 	while not done:
 		rand_index = random.randrange(len(known_words_list))
 		rand_pair = known_words_list[rand_index]
@@ -53,7 +57,6 @@ def rand_pair(known_words_list, question=True, used_words=set()):
 				done = True
 
 				return spanish, english
-
 			else:
 				continue
 
