@@ -18,9 +18,10 @@ def is_it_valid(response, choices, answer):
     """Check if response is valid"""
     clear_screen()
 
-    if response in '1234' and response != '':
-        response = '1234'.find(response)
-        response = choices[response]
+    index = int(response) -1
+
+    if index in range(4):
+        response = choices[index]
         correctness = is_it_correct(answer, response)
         
         return correctness
