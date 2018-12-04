@@ -1,5 +1,5 @@
 from clear_screen import clear_screen
-from write_to import write_to
+from read_write import read_from_file, save_to_file
 
 KNOWN_WORDS_LOCATION = 'known_words.dictionary'
 
@@ -14,7 +14,12 @@ def find_difficulty(word):
 
             if difficulty in range(1, 6):
                 clear_screen()
-                write_to(KNOWN_WORDS_LOCATION, word, difficulty)
+
+                known_words = read_from_file(KNOWN_WORDS_LOCATION)
+                
+                known_words[difficulty].append(word)
+
+                save_to_file(known_words, KNOWN_WORDS_LOCATION)
 
         except:
             difficulty = 0
