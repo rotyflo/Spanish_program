@@ -1,6 +1,6 @@
 import random
 
-def rand_choice(choices):
+def randomize_choices(choices):
     """Returns a random list from an orderd list"""
     rand_set = set()
     choices = list(choices)

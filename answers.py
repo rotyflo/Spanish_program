@@ -2,19 +2,19 @@ from clear_screen import clear_screen
 
 total_answered = 0
 
-def answer_prompt(answer, choices):
+def ask_answer(answer, choices):
     """Prints answer promt and returns user input as a boolean"""
     response = input('\nChoose 1 - 4 and press Enter: > ')
 
     if response.lower() == 'exit':
         end_program()
 
-    validity = is_it_valid(response, choices, answer)
+    validity = check_validity(response, choices, answer)
 
     return validity
 
 
-def is_it_valid(response, choices, answer):
+def check_validity(response, choices, answer):
     """Check if response is valid"""
     clear_screen()
 
@@ -22,7 +22,7 @@ def is_it_valid(response, choices, answer):
 
     if index in range(4):
         response = choices[index]
-        correctness = is_it_correct(answer, response)
+        correctness = check_correctness(answer, response)
         
         return correctness
     else:
@@ -31,7 +31,7 @@ def is_it_valid(response, choices, answer):
         return False
 
 
-def is_it_correct(answer, response):
+def check_correctness(answer, response):
     """Check if answer is correct or not"""
     global total_answered
 

@@ -3,7 +3,7 @@ from write_to import write_to
 
 KNOWN_WORDS_LOCATION = 'known_words.dictionary'
 
-def how_difficult(word):
+def find_difficulty(word):
     """A prompt asking the difficulty of each question"""
     difficulty = 0
 

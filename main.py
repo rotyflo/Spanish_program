@@ -1,8 +1,8 @@
 from csv_to_list import csv_to_list
 from clear_screen import clear_screen
-from questions import question_prompt
+from questions import ask_question
 from random_stuff import rand_row
-from how_difficult import how_difficult
+from how_difficult import find_difficulty
 
 clear_screen()
 print('Type "exit" to end program\n')
@@ -22,6 +22,6 @@ while True:
 	correct = False
 
 	while not correct:
-		correct = question_prompt(word, choices, answer)
+		correct = ask_question(word, choices, answer)
 
-	how_difficult(word)
+	find_difficulty(word)
