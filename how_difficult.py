@@ -7,16 +7,14 @@ def find_difficulty(word):
     """A prompt asking the difficulty of each question"""
     difficulty = 0
 
-    while difficulty < 1 or difficulty > 5:
+    while difficulty not in range(1, 6):
         try:
             difficulty = input('Rate difficulty from 1(EASY) to 5(HARD): ')
             difficulty = int(difficulty)
 
-            if difficulty >= 1 and difficulty <= 5:
+            if difficulty in range(1, 6):
                 clear_screen()
                 write_to(KNOWN_WORDS_LOCATION, word, difficulty)
 
-
         except:
-            if difficulty not in range(1,6):
-                difficulty = 0
+            difficulty = 0

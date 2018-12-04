@@ -18,7 +18,7 @@ def check_validity(response, choices, answer):
     """Check if response is valid"""
     clear_screen()
 
-    index = int(response) -1
+    index = int(response) - 1
 
     if index in range(4):
         response = choices[index]
@@ -42,7 +42,7 @@ def check_correctness(answer, response):
 
         return True
     else:
-        print('Sorry try again\n')
+        print('Sorry try again.\n')
 
         return False
 
