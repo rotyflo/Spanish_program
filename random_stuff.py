@@ -20,7 +20,7 @@ def rand_row(word_list, question=True, used_words=set()):
     done = False
     
     while not done:
-        random_row = random.randrange(1, 101)
+        random_row = random.randrange(100)
         row = word_list[random_row]
         word = row[1]
         answer = row[4]

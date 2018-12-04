@@ -4,7 +4,6 @@ from clear_screen import clear_screen
 
 def question_prompt(word, choices, answer):
     """Prints out question prompt"""
-    clear_screen()
 
     print(f'Translate: {word}')
     
