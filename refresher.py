@@ -29,11 +29,33 @@ def translate_to_dict(word_set, word_list):
 				spanish.append(word)
 	return dict(zip(spanish,english))
 
+def dict2list(dictionary):
+	list_of_pairs = []
+	for key, value in dictionary.items():
+		temp = [key, value]
+		list_of_pairs.append(temp)
+	return list_of_pairs
+
+
 
 words_list = csv_to_list('100_words.csv')
 known_words = file2dict('known_words.dictionary')
 known_words_set = dict2set(known_words)
 known_words_translation_dict = translate_to_dict(known_words_set, words_list)
+known_words_list = dict2list(known_words_translation_dict)
+
+
 clear_screen()
-print('Type "exit" to end program\n')
-print(known_words_translation_dict)
+
+print(known_words_list)
+print(len(known_words_list))
+
+
+
+
+
+
+
+
+
+
