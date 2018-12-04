@@ -1,6 +1,7 @@
 from clear_screen import clear_screen
 from ast import literal_eval
 from csv_to_list import csv_to_list
+import random
 
 
 def file2dict(file_path):
@@ -37,6 +38,31 @@ def dict2list(dictionary):
 	return list_of_pairs
 
 
+def rand_pair(known_words_list, question=True, used_words=set()):
+	done = False
+	while not done:
+		rand_index = random.randrange(len(known_words_list))
+		rand_pair = known_words_list[rand_index]
+		spanish = rand_pair[0]
+		english = rand_pair[1]
+
+		if question == True:
+			if spanish not in used_words:
+				used_words.add(spanish)
+
+				done = True
+
+				return spanish, english
+
+			else:
+				continue
+
+		else:
+			done = True
+
+			return english
+
+
 
 words_list = csv_to_list('100_words.csv')
 known_words = file2dict('known_words.dictionary')
@@ -46,9 +72,9 @@ known_words_list = dict2list(known_words_translation_dict)
 
 
 clear_screen()
-
-print(known_words_list)
-print(len(known_words_list))
+for x in range(6):
+	print(rand_pair(known_words_list, False))
+	print(rand_pair(known_words_list))
 
 
 
