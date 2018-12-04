@@ -1,22 +1,25 @@
 from clear_screen import clear_screen
-from write_to import write_to
+from read_write import read_from_file, save_to_file
 
 KNOWN_WORDS_LOCATION = 'known_words.dictionary'
 
-def how_difficult(word):
+def find_difficulty(word):
     """A prompt asking the difficulty of each question"""
     difficulty = 0
 
-    while difficulty < 1 or difficulty > 5:
+    while difficulty not in range(1, 6):
         try:
             difficulty = input('Rate difficulty from 1(EASY) to 5(HARD): ')
             difficulty = int(difficulty)
 
-            if difficulty >= 1 and difficulty <= 5:
+            if difficulty in range(1, 6):
                 clear_screen()
-                write_to(KNOWN_WORDS_LOCATION, word, difficulty)
 
+                known_words = read_from_file(KNOWN_WORDS_LOCATION)
+                
+                known_words[difficulty].append(word)
+
+                save_to_file(known_words, KNOWN_WORDS_LOCATION)
 
         except:
-            if difficulty not in range(1,6):
-                difficulty = 0
+            difficulty = 0

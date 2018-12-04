@@ -1,6 +1,6 @@
 import random
 
-def rand_choice(choices):
+def randomize_choices(choices):
     """Returns a random list from an orderd list"""
     rand_set = set()
     choices = list(choices)
@@ -25,7 +25,7 @@ def rand_row(word_list, question=True, used_words=set()):
         word = row[1]
         answer = row[4]
 
-        if question == True:
+        if question:
             if word not in used_words:
                 used_words.add(word)
 

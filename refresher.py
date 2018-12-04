@@ -1,15 +1,8 @@
 from clear_screen import clear_screen
 from ast import literal_eval
 from csv_to_list import csv_to_list
+from read_write import read_from_file
 import random
-
-
-def file2dict(file_path):
-	"""Turns the dictionary file into a python_dict"""
-	read_file = open(file_path, 'r').read()
-	python_dict = literal_eval(read_file)
-	return python_dict
-
 
 def dict2set(dictionary):
 	"""Make a dictionary to a set"""
@@ -68,7 +61,7 @@ def rand_pair(known_words_list, question=True, used_words=set()):
 
 
 words_list = csv_to_list('100_words.csv')
-known_words = file2dict('known_words.dictionary')
+known_words = read_from_file('known_words.dictionary')
 known_words_set = dict2set(known_words)
 known_words_translation_dict = translate_to_dict(known_words_set, words_list)
 known_words_list = dict2list(known_words_translation_dict)
