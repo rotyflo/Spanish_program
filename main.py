@@ -1,27 +1,41 @@
-from csv_to_list import csv_to_list
 from clear_screen import clear_screen
-from questions import ask_question
-from random_stuff import rand_row
-from how_difficult import find_difficulty
+from multiple_choice import multiple_choice
 
 clear_screen()
-print('Type "exit" to end program\n')
 
-while True:
-	csv_file = '100_words.csv'
-	word_list = csv_to_list(csv_file)
+print("\nLANGUAGE LEARNING APP")
+print("(type 'exit' to end program)\n")
 
-	choices = set()
+print("\t1) Multiple Choice")
+print("\t2) Fill-In the Blank")
+print("\t3) Change Language")
+print("\t4) Other")
 
-	word, answer = rand_row(word_list)
-	choices.add(answer)
+selection = input("\nEnter 1 - 4 to choose: ")
 
-	while len(choices) <= 3:
-		choices.add(rand_row(word_list, question=False))
+if selection.lower() == 'exit':
+	exit()
 
-	correct = False
+elif int(selection) in range(1, 5):
+	selection = int(selection)
 
-	while not correct:
-		correct = ask_question(word, choices, answer)
+	if selection == 1:
+		multiple_choice()
 
-	find_difficulty(word)
+	elif selection == 2:
+		# fill_in_blank()
+		clear_screen()
+		print("Fill-in the blank mode is coming soon!")
+
+	elif selection == 3:
+		# change_language()
+		clear_screen()
+		print("Multiple language options are coming soon!")
+
+	elif selection == 4:
+		# other()
+		clear_screen()
+		print("Other features are coming soon!")
+
+else:
+	print("Sorry, try again.")
