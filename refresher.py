@@ -68,9 +68,9 @@ known_words_list = dict2list(known_words_translation_dict)
 
 
 clear_screen()
-for x in range(6):
-	print(rand_pair(known_words_list, False))
-	print(rand_pair(known_words_list))
+
+print(rand_pair(known_words_list, False))
+print(rand_pair(known_words_list))
 
 
 
