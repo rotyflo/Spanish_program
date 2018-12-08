@@ -1,5 +1,5 @@
 """
-TODO: Make menu more flexible 
+TODO: Make menu more flexible
 """
 import program
 
