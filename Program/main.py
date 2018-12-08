@@ -1,3 +1,7 @@
+"""
+TODO: Make menu more flexible 
+
+"""
 import program
 
-menu = program.make_menu()
+program.make_menu()
