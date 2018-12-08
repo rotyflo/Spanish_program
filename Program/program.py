@@ -185,7 +185,7 @@ def multiple_choice():
 
 		find_difficulty(word)
 
-def show_menu():
+def make_menu():
 	clear_screen()
 
 	print("\nLANGUAGE LEARNING APP")
