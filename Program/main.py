@@ -1,3 +1,3 @@
 import program
 
-program.show_menu()
+menu = program.make_menu()
