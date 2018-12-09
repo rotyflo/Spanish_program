@@ -2,9 +2,11 @@ import os
 import csv
 import random
 
-total_answered = 0
+MENU = ''
+TOTAL_ANSWERED = 0
 KNOWN_WORDS_LOCATION = 'known_words.dictionary'
-running = True
+RUNNING = True
+PROGRAMS = ['Multiple Choice', 'Exit']
 
 def clear_screen():
     """Clears screen"""
@@ -49,10 +51,10 @@ def check_validity(response, choices, answer):
 
 def check_correctness(answer, response):
     """Check if answer is correct or not"""
-    global total_answered
+    global TOTAL_ANSWERED
 
     if response == answer:
-        total_answered += 1
+        TOTAL_ANSWERED += 1
 
         print('Nice work! You got it!\n')
 
@@ -63,11 +65,11 @@ def check_correctness(answer, response):
         return False
 
 def end_program():
+    global MENU
     clear_screen()
 
-    print(f'You got {total_answered} questions right!')
-        
-    exit()
+    print(f'You got {TOTAL_ANSWERED} questions right!')
+    show_menu(MENU)
 
 
 def randomize_choices(choices):
@@ -185,41 +187,76 @@ def multiple_choice():
 
 		find_difficulty(word)
 
-def show_menu():
-	clear_screen()
 
-	print("\nLANGUAGE LEARNING APP")
-	print("(type 'exit' to end program)\n")
-
-	print("\t1) Multiple Choice")
-	print("\t2) Fill-In the Blank")
-	print("\t3) Change Language")
-	print("\t4) Other")
-	selection = input("\nEnter 1 - 4 to choose: ")
+def run_program(selection):
+    switch_case = {
+    1: multiple_choice,
+    2: exit
+    }
+    func = switch_case.get(selection)
+    func()
 
 
-	if selection.lower() == 'exit':
-		exit()
+def option_selection(list_of_programs=PROGRAMS):
+    selection = input('\nChoose an option from the list: ')
+    try:
+        if selection.lower() == 'exit':
+            exit()
+        selection = int(selection)
+        list_of_programs[selection-1]
+        if selection == 0:
+            raise IndexError
+        run_program(selection)
+    except ValueError:
+        clear_screen()
+        print("PLEASE USE NUMBERS TO MAKE SELECTION.")
+        show_menu(MENU)
+    except IndexError:
+        clear_screen()
+        print('THAT OPTION IS NOT IN THE LIST.')
+        show_menu(MENU)
 
-	elif int(selection) in range(1, 5):
-		selection = int(selection)
 
-		if selection == 1:
-			multiple_choice()
 
-		elif selection == 2:
-			# fill_in_blank()
-			clear_screen()
-			print("Fill-in the blank mode is coming soon!")
+def show_menu(menu):
+    print(menu)
+    option_selection()
 
-		elif selection == 3:
-			# change_language()
-			clear_screen()
-			print("Multiple language options are coming soon!")
-		elif selection == 4:
-			# other()s
-			clear_screen()
-			print("Other features are coming soon!")
 
-	else:
-		print("Sorry, try again.")
+def make_menu(list_of_programs=PROGRAMS):
+    global MENU
+    clear_screen()
+    menu_str = "\nLANGUAGE LEARNING APP\n(type 'exit' to end a program)\n"
+    option_number = 1
+    for item in list_of_programs:
+        option = f'\n{option_number}.) {item}'
+        menu_str += option
+        option_number += 1
+    MENU = menu_str
+    show_menu(MENU)
+
+	# if selection.lower() == 'exit':
+	# 	exit()
+
+	# elif int(selection) in range(1, 5):
+	# 	selection = int(selection)
+
+	# 	if selection == 1:
+	# 		multiple_choice()
+
+	# 	elif selection == 2:
+	# 		# fill_in_blank()
+	# 		clear_screen()
+	# 		print("Fill-in the blank mode is coming soon!")
+
+	# 	elif selection == 3:
+	# 		# change_language()
+	# 		clear_screen()
+	# 		print("Multiple language options are coming soon!")
+	# 	elif selection == 4:
+	# 		# other()s
+	# 		clear_screen()
+	# 		print("Other features are coming soon!")
+
+	# else:
+	# 	print("Sorry, try again.")
